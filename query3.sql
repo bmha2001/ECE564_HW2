@@ -1,0 +1,1 @@
+SELECT COUNT(ItemID) FROM Item WHERE (SELECT COUNT(Name) FROM Category WHERE Category.ItemID = Item.ItemID) = 4;
