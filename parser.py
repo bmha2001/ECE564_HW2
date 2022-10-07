@@ -140,7 +140,8 @@ def load_item(file, item):
         file.write(transformDollar(item.get('First_Bid')) + "|")
     file.write(transformDttm(item.get('Started')) + "|")
     file.write(transformDollar(item.get('Currently')) + "|")
-    file.write(transformDttm(item.get('Ends')))
+    file.write(transformDttm(item.get('Ends')) + "|")
+    file.write(item.get('Seller').get('UserID') )
     file.write('\n')
 
 """
