@@ -1,8 +1,6 @@
 .separator |
-.import items.dat Items
-update Items set Country = null where Country = 'NULL';
-update Items set Location = null where Location = 'NULL';
-.import ebayuser.dat EbayUser
+.import items_unique.dat Items
+.import users_unique.dat EbayUser
 update Items set Buy_Price = null where Buy_Price = 'NULL';
-.import category.dat Category
-.import bid.dat Bid
+.import categories_unique.dat Category
+.import bids_unique.dat Bid
