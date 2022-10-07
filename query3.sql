@@ -1,1 +1,1 @@
-SELECT COUNT(ItemID) FROM Items WHERE (SELECT COUNT(Name) FROM Category WHERE Category.ItemID = Items.ItemID) = 4;
+SELECT COUNT(ItemID) FROM (SELECT COUNT(Name) as Categories, ItemID FROM Category GROUP BY ItemID) WHERE Categories = 4;
