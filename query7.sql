@@ -1,1 +1,1 @@
-SELECT COUNT(DISTINCT Name) FROM Category WHERE (SELECT MAX(Currently) FROM Items WHERE Category.ItemID = Items.ItemID) > 100;
+SELECT COUNT(DISTINCT Category.Name) FROM Category, Bid WHERE Category.ItemID = Bid.ItemID AND Bid.Amount > 100;
