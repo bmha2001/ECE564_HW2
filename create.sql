@@ -20,7 +20,7 @@ CREATE TABLE Items(
 	First_Bid REAL,
 	Started TEXT,
 	Currently REAL,
-	Ends TEXT
+	Ends TEXT,
 	FOREIGN KEY (SellerID)
 		REFERENCES EbayUser(UserID)
 );
