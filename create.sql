@@ -12,6 +12,7 @@ CREATE TABLE EbayUser(
 
 CREATE TABLE Items(
 	ItemID TEXT PRIMARY KEY, 
+	SellerID TEXT,
 	Name TEXT, 
 	Description TEXT, 
 	Buy_Price REAL,
@@ -20,6 +21,8 @@ CREATE TABLE Items(
 	Started TEXT,
 	Currently REAL,
 	Ends TEXT
+	FOREIGN KEY (SellerID)
+		REFERENCES EbayUser(UserID)
 );
 
 CREATE TABLE Bid(
