@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS EbayUser;
 DROP TABLE IF EXISTS Bid;
-DROP TABLE IF EXISTS Item;
+DROP TABLE IF EXISTS Items;
 DROP TABLE IF EXISTS Category;
 
 CREATE TABLE EbayUser(
@@ -10,7 +10,7 @@ CREATE TABLE EbayUser(
 	Rating REAL
 );
 
-CREATE TABLE Item(
+CREATE TABLE Items(
 	ItemID TEXT PRIMARY KEY, 
 	Name TEXT, 
 	Description TEXT, 
@@ -27,7 +27,7 @@ CREATE TABLE Bid(
 	ItemID TEXT, 
 	Amount REAL, 
 	Time TEXT,
-	PRIMARY KEY (UserID, ItemID),
+	PRIMARY KEY (UserID, ItemID, Amount),
 	FOREIGN KEY (UserID)
 		REFERENCES EbayUser(UserID),
 	FOREIGN KEY (ItemID)

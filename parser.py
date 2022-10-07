@@ -115,45 +115,23 @@ def load_bid(file, item):
 
 def load_item(file, item):
     file.write(item.get('ItemID') + "|")
-    if item.get('Name') is None:
-        file.write("NULL" + "|")
-    else:
-        file.write(item.get('Name') + "|")
-
+    file.write(item.get('Name') + "|")
     if item.get('Description') is None:
         file.write("NULL" + "|")
     else:
         file.write(item.get('Description') + "|")
-
     if item.get('Buy_Price') is None:
         file.write("NULL" + "|")
     else:
         file.write(transformDollar(item.get('Buy_Price')) + "|")
-    
-    if item.get('Number_of_Bids') is None:
-        file.write("NULL" + "|")
-    else:
-        file.write(item.get('Number_of_Bids') + "|")
-
+    file.write(item.get('Number_of_Bids') + "|")
     if item.get('First_Bid') is None:
         file.write("NULL" + "|")
     else:
         file.write(transformDollar(item.get('First_Bid')) + "|")
-    
-    if item.get('Started') is None:
-        file.write("NULL" + "|")
-    else:
-        file.write(transformDttm(item.get('Started')) + "|")
-
-    if item.get('Currently') is None:
-        file.write("NULL" + "|")
-    else:
-        file.write(transformDollar(item.get('Currently')) + "|")
-
-    if item.get('Ends') is None:
-        file.write("NULL" + "|")
-    else:
-        file.write(transformDttm(item.get('Ends')))
+    file.write(transformDttm(item.get('Started')) + "|")
+    file.write(transformDollar(item.get('Currently')) + "|")
+    file.write(transformDttm(item.get('Ends')))
     file.write('\n')
 
 """
