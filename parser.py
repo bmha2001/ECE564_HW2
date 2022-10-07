@@ -72,7 +72,11 @@ def transformDollar(money):
 def load_category(file, item):
     categories = item.get('Category')
     if categories is not None:
+        categorySet = []
         for category in categories:
+            if categorySet.__contains__(category):
+                continue
+            categorySet.append(category)
             file.write(category + "|")
             file.write(item.get('ItemID'))
             file.write('\n')
