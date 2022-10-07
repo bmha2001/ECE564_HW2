@@ -12,6 +12,7 @@ CREATE TABLE EbayUser(
 
 CREATE TABLE Items(
 	ItemID TEXT PRIMARY KEY, 
+	SellerID TEXT,
 	Name TEXT, 
 	Description TEXT, 
 	Buy_Price REAL,

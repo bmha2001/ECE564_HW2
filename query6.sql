@@ -1,1 +1,1 @@
-SELECT COUNT(UserID) FROM EbayUser WHERE EXISTS (SELECT * FROM Item WHERE Item.UserID = EbayUser.UserID) AND EXISTS (SELECT * FROM Bid WHERE Bid.UserID = EbayUser.UserID);
+SELECT COUNT(DISTINCT UserID) FROM Bid, Items WHERE Bid.UserID = Items.SellerID;
