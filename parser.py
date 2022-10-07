@@ -124,6 +124,7 @@ def load_bid(file, item):
 
 def load_item(file, item):
     file.write(item.get('ItemID') + "|")
+    file.write(item.get('Seller').get('UserID') + "|")
     file.write(item.get('Name').replace("\"", "") + "|")
     if item.get('Description') is None:
         file.write("NULL" + "|")
@@ -140,8 +141,7 @@ def load_item(file, item):
         file.write(transformDollar(item.get('First_Bid')) + "|")
     file.write(transformDttm(item.get('Started')) + "|")
     file.write(transformDollar(item.get('Currently')) + "|")
-    file.write(transformDttm(item.get('Ends')) + "|")
-    file.write(item.get('Seller').get('UserID') )
+    file.write(transformDttm(item.get('Ends')))
     file.write('\n')
 
 """

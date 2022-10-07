@@ -1,5 +1,5 @@
 .separator |
-.import items_unique.dat Items
+.import items.dat Items
 .import users_unique.dat EbayUser
 update Items set Buy_Price = null where Buy_Price = 'NULL';
 .import categories_unique.dat Category
