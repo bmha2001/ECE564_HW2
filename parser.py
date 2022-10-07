@@ -28,6 +28,8 @@ import sys
 from json import loads
 from re import sub
 
+userIDs = {1,2}
+
 columnSeparator = "|"
 
 # Dictionary of months used for date transformation
@@ -77,29 +79,36 @@ def load_category(file, item):
 
 def load_user(file, item):
     seller = item.get('Seller')
-    file.write(seller.get('UserID') + '|')
-    file.write(item.get('Location') + '|')
-    file.write(item.get('Country') + '|')
-    file.write(seller.get('Rating'))
-    file.write('\n')
+    if seller.get('UserID') not in userIDs: 
+        file.write(seller.get('UserID') + '|')
+        if item.get('Location') is None:
+            file.write("NULL" + "|")
+        else:
+            file.write(item.get('Location').replace("\"", "") + '|')
+        if item.get('Country') is None:
+            file.write("NULL" + "|")
+        else:
+            file.write(item.get('Country') + '|')
+        file.write(seller.get('Rating'))
+        file.write('\n')
+        userIDs.add(seller.get('UserID'))
     bids = item.get('Bids')
     if bids is not None:
         for bid in bids:
             bid = bid.get("Bid")
-            file.write(bid.get('Bidder').get('UserID') + '|')
-            if bid.get('Bidder').get('Location') is None:
-                file.write("NULL" + "|")
-            else:
-                file.write(bid.get('Bidder').get('Location') + "|")
-
-            if bid.get('Bidder').get('Country') is None:
-                file.write("NULL" + "|")
-            else:
-                file.write(bid.get('Bidder').get('Country') + "|")
-
-            file.write(bid.get('Bidder').get('Rating'))
-            file.write('\n')
-
+            if bid.get('Bidder').get('UserID') not in userIDs: 
+                file.write(bid.get('Bidder').get('UserID') + '|')
+                if bid.get('Bidder').get('Location') is None:
+                    file.write("NULL" + "|")
+                else:
+                    file.write(bid.get('Bidder').get('Location').replace("\"", "") + "|")
+                if bid.get('Bidder').get('Country') is None:
+                    file.write("NULL" + "|")
+                else:
+                    file.write(bid.get('Bidder').get('Country') + "|")
+                file.write(bid.get('Bidder').get('Rating'))
+                file.write('\n')
+                userIDs.add(bid.get('Bidder').get('UserID'))
 
 def load_bid(file, item):
     bids = item.get('Bids')
