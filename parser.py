@@ -115,11 +115,11 @@ def load_bid(file, item):
 
 def load_item(file, item):
     file.write(item.get('ItemID') + "|")
-    file.write(item.get('Name') + "|")
+    file.write(item.get('Name').replace("\"", "") + "|")
     if item.get('Description') is None:
         file.write("NULL" + "|")
     else:
-        file.write(item.get('Description') + "|")
+        file.write((item.get('Description').replace("\"", "")) + "|")
     if item.get('Buy_Price') is None:
         file.write("NULL" + "|")
     else:
